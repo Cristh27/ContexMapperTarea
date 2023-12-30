@@ -1,54 +1,18 @@
 digraph "ContextMapGraph" {
-    "GestionInventario" [
-        "margin"="0.3",
-        "orientation"="35",
-        "shape"="egg",
-        "fontsize"="16",
-        "style"="bold",
-        "label"="GestionInventario\nInventario",
-        "fontname"="sans-serif"
-    ]
-
-    "ServiciosFotocopias" [
-        "margin"="0.3",
-        "orientation"="267",
-        "shape"="egg",
-        "fontsize"="16",
-        "style"="bold",
-        "label"="ServiciosFotocopias\nFotocopias",
-        "fontname"="sans-serif"
-    ]
-
-    "ProcesamientoPedidos" [
-        "margin"="0.3",
-        "orientation"="91",
-        "shape"="egg",
-        "fontsize"="16",
-        "style"="bold",
-        "label"="ProcesamientoPedidos\nPedidos",
-        "fontname"="sans-serif"
-    ]
-
-    "GestionInventario" -> "ServiciosFotocopias" [
-        "headlabel"=<<table cellspacing="0" cellborder="0" border="0">
-            <tr><td bgcolor="white">U</td></tr>
-        </table>>,
-        "labeldistance"="0",
-        "fontsize"="12",
-        "taillabel"=<<table cellspacing="0" cellborder="1" border="0">
-            <tr><td bgcolor="white" sides="r">OHS, PL</td></tr>
-        </table>>,
-        "style"="bold",
-        "label"="                                        ",
-        "dir"="none",
-        "fontname"="sans-serif"
-    ]
-
-    "ServiciosFotocopias" -> "ProcesamientoPedidos" [
-        "fontsize"="12",
-        "style"="bold",
-        "label"="Shared Kernel",
-        "dir"="none",
-        "fontname"="sans-serif"
-    ]
+graph ["imagepath"="/tmp/GraphvizJava"]
+"CatalogoProductos" ["margin"="0.3","orientation"="229","shape"="egg","fontsize"="16","style"="bold","label"="CatalogoProductos\n","fontname"="sans-serif"]
+"GestionInventario" ["margin"="0.3","orientation"="125","shape"="egg","fontsize"="16","style"="bold","label"="GestionInventario\n","fontname"="sans-serif"]
+"GestionVentas" ["margin"="0.3","orientation"="195","shape"="egg","fontsize"="16","style"="bold","label"="GestionVentas\n","fontname"="sans-serif"]
+"ServiciosEntrega" ["margin"="0.3","orientation"="228","shape"="egg","fontsize"="16","style"="bold","label"="ServiciosEntrega\n","fontname"="sans-serif"]
+"ServiciosFotocopias" ["margin"="0.3","orientation"="72","shape"="egg","fontsize"="16","style"="bold","label"="ServiciosFotocopias\n","fontname"="sans-serif"]
+"Facturacion" ["margin"="0.3","orientation"="317","shape"="egg","fontsize"="16","style"="bold","label"="Facturacion\n","fontname"="sans-serif"]
+"ProcesamientoPedidos" ["margin"="0.3","orientation"="349","shape"="egg","fontsize"="16","style"="bold","label"="ProcesamientoPedidos\n","fontname"="sans-serif"]
+"GestionClientes" ["margin"="0.3","orientation"="188","shape"="egg","fontsize"="16","style"="bold","label"="GestionClientes\n","fontname"="sans-serif"]
+"CatalogoProductos" -> "GestionInventario" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"CatalogoProductos" -> "GestionVentas" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"CatalogoProductos" -> "ProcesamientoPedidos" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionVentas" -> "ServiciosEntrega" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionVentas" -> "ServiciosFotocopias" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"GestionVentas" -> "Facturacion" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
+"ProcesamientoPedidos" -> "GestionClientes" ["fontsize"="12","style"="bold","label"="Shared Kernel","dir"="none","fontname"="sans-serif"]
 }
