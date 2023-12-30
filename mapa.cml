@@ -1,0 +1,42 @@
+ContextMap EcommerceMap {
+    contains ShoppingCartContext
+    contains ProductCatalogContext
+    contains OrderProcessingContext
+
+    ShoppingCartContext [SK]<->[SK] ProductCatalogContext
+    ShoppingCartContext [D]<-[U,OHS,PL] OrderProcessingContext
+}
+BoundedContext ShoppingCartContext {
+    Module cart {
+        basePackage = com.example.ecommerce.cart
+
+        Aggregate ShoppingCart {
+            Entity Cart
+            ValueObject CartItem
+            enum CartStatus { OPEN, CHECKOUT, CLOSED }
+        }
+    }
+}
+
+BoundedContext ProductCatalogContext {
+    Module catalog {
+        basePackage = com.example.ecommerce.catalog
+
+        Aggregate ProductCatalog {
+            Entity Product
+            ValueObject ProductDetails
+        }
+    }
+}
+
+BoundedContext OrderProcessingContext {
+    Module order {
+        basePackage = com.example.ecommerce.order
+
+        Aggregate OrderProcessing {
+            Entity Order
+            ValueObject OrderItem
+            enum OrderStatus { NEW, PROCESSING, SHIPPED, DELIVERED }
+        }
+    }
+}
