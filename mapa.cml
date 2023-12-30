@@ -1,42 +1,69 @@
-ContextMap EcommerceMap {
-    contains ShoppingCartContext
-    contains ProductCatalogContext
-    contains OrderProcessingContext
+ContextMap TiendaUtilesEscolaresMap {
+    contains GestionInventario
+    contains ServiciosFotocopias
+    contains ProcesamientoPedidos
+    contains GestionClientes
+    contains ServiciosEntrega
 
-    ShoppingCartContext [SK]<->[SK] ProductCatalogContext
-    ShoppingCartContext [D]<-[U,OHS,PL] OrderProcessingContext
+    GestionInventario [SK]<->[SK] ServiciosFotocopias
+    GestionInventario [D]<-[U,OHS,PL] ProcesamientoPedidos
+    GestionClientes [SK]<->[SK] ProcesamientoPedidos
+    ServiciosEntrega [SK]<->[SK] ProcesamientoPedidos
 }
-BoundedContext ShoppingCartContext {
-    Module cart {
-        basePackage = com.example.ecommerce.cart
 
-        Aggregate ShoppingCart {
-            Entity Cart
-            ValueObject CartItem
-            enum CartStatus { OPEN, CHECKOUT, CLOSED }
+BoundedContext GestionInventario {
+    Module inventario {
+        basePackage = com.ejemplo.tienda.inventario
+
+        Aggregate GestionInventario {
+            Entity ProductoInventario
+            ValueObject DetallesInventario
+            enum EstadoProducto { DISPONIBLE, AGOTADO, EN_REPOSICION }
         }
     }
 }
 
-BoundedContext ProductCatalogContext {
-    Module catalog {
-        basePackage = com.example.ecommerce.catalog
+BoundedContext ServiciosFotocopias {
+    Module fotocopias {
+        basePackage = com.ejemplo.tienda.fotocopias
 
-        Aggregate ProductCatalog {
-            Entity Product
-            ValueObject ProductDetails
+        Aggregate ServiciosFotocopias {
+            Entity Copiadora
+            ValueObject DetallesCopia
         }
     }
 }
 
-BoundedContext OrderProcessingContext {
-    Module order {
-        basePackage = com.example.ecommerce.order
+BoundedContext ProcesamientoPedidos {
+    Module pedidos {
+        basePackage = com.ejemplo.tienda.pedidos
 
-        Aggregate OrderProcessing {
-            Entity Order
-            ValueObject OrderItem
-            enum OrderStatus { NEW, PROCESSING, SHIPPED, DELIVERED }
+        Aggregate ProcesamientoPedidos {
+            Entity Pedido
+            ValueObject DetallesPedido
+            enum EstadoPedido { NUEVO, PROCESANDO, ENVIADO, ENTREGADO }
+        }
+    }
+}
+
+BoundedContext GestionClientes {
+    Module clientes {
+        basePackage = com.ejemplo.tienda.clientes
+
+        Aggregate GestionClientes {
+            Entity Cliente
+            ValueObject DetallesCliente
+        }
+    }
+}
+
+BoundedContext ServiciosEntrega {
+    Module entrega {
+        basePackage = com.ejemplo.tienda.entrega
+
+        Aggregate ServiciosEntrega {
+            Entity ServicioEntrega
+            ValueObject DetallesEntrega
         }
     }
 }
